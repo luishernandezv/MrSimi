@@ -1,0 +1,18 @@
+<h1>Listing branches of <%= @pharmacy.name %></h1>
+
+<ul class="branches">
+<% @branches.each do |branch| %>
+  <li class="branch">
+    <h2><%= branch.address %></h2>
+    <%= "#{branch.commune}, #{branch.city}" %></td>
+    <span>
+      <%= link_to 'Show', [@pharmacy, branch] %> |
+      <%= link_to 'Edit', edit_pharmacy_branch_path(@pharmacy, branch) %> |
+      <%= link_to 'Destroy', [@pharmacy, branch], confirm: 'Are you sure?', method: :delete %></span>
+  </li>
+<% end %>
+</ul>
+
+<br />
+
+<%= link_to 'New Branch', new_pharmacy_branch_path %>

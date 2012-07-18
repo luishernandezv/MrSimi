@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Address:</b>
+  <%= @branch.address %>
+</p>
+
+<p>
+  <b>Commune:</b>
+  <%= @branch.commune %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @branch.city %>
+</p>
+
+<p>
+  <b>Pharmacy:</b>
+  <%= @branch.pharmacy.name %>
+</p>
+
+<p>
+  <b>Mapa:</b><br/>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@branch.latitude}%2C#{@branch.longitude}" %>
+</p>
+
+<h1>Farmacias Cercanas (5 km)</h1>
+<ul>
+  <% for branch in @branch.nearbys(5, :units => :km) %>
+    <li><p><%=branch.pharmacy.name%>:</p> <%=link_to branch.generate_address, [branch.pharmacy, branch]%>(<%= branch.distance.round(2) %> kilometers)</li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_pharmacy_branch_path(@branch) %> |
+<%= link_to 'Back', pharmacies_path %>

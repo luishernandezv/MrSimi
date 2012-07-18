@@ -1,0 +1,17 @@
+<h1>Listing pharmacies</h1>
+<%=request.remote_ip + " " + request.location.city + " " + request.location.country%>
+<%= form_tag pharmacies_path, :method => :get do %>
+  <p>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search Near", :name => nil %>
+  </p>
+<% end %>
+
+<ul class="pharmacies">
+<% @branches.each do |branch| %>
+  <li class="pharmacy">
+	<h2><%= link_to branch.generate_address, [branch.pharmacy, branch] %></h2>
+  </li>
+<% end %>
+</ul>
+<br />

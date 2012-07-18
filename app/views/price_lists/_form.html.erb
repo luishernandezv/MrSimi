@@ -1,0 +1,25 @@
+<%= form_for(@price_list) do |f| %>
+  <% if @price_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@price_list.errors.count, "error") %> prohibited this price_list from being saved:</h2>
+
+      <ul>
+      <% @price_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :branch %><br />
+    <%= f.text_field :branch %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @price_list.name %>
+</p>
+
+<p>
+  <b>Branch:</b>
+  <%= @price_list.branch %>
+</p>
+
+
+<%= link_to 'Edit', edit_price_list_path(@price_list) %> |
+<%= link_to 'Back', price_lists_path %>
